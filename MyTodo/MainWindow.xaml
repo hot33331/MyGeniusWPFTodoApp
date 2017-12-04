@@ -1,25 +1,32 @@
-﻿<Window x:Class="MyTodo.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyTodo"
         xmlns:viewModels="clr-namespace:MyTodo.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MyTodo.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.DataContext>
-            <viewModels:MainWindowViewModel></viewModels:MainWindowViewModel>
+            <viewModels:MainWindowViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
             <RowDefinition/>
-            
+
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Height="25">Neue Todo:</Label>
+            <Label Height="25" Content="Neue Todo:"/>
             <TextBox Text="{Binding TodoText}" Height="25" Width="140"/>
-            <Button Command="{Binding AddTodoCommand}" Height="25" Width="40" >OK</Button>
+            <Button Height="25" Width="40" Content="OK" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="AddTodo"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </StackPanel>
         <ListView ItemsSource="{Binding Todos}" DisplayMemberPath="Text" Grid.Row="1" BorderThickness="0"/>
     </Grid>
