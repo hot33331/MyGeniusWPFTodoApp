@@ -19,7 +19,11 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Height="25" Content="Neue Todo:"/>
-            <TextBox Text="{Binding TodoText}" Height="25" Width="140"/>
+            <TextBox Text="{Binding TodoText}" Height="25" Width="140">
+                <i:Interaction.Behaviors>
+                    <local:WatermarkBehavior Text="Todo eingeben"/>
+                </i:Interaction.Behaviors>
+            </TextBox>
             <Button Height="25" Width="40" Content="OK" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">

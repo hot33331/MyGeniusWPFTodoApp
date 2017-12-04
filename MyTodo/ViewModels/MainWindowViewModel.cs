@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyTodo.ViewModels
 {
@@ -21,7 +22,7 @@ namespace MyTodo.ViewModels
 
 
         
-        public void AddTodo()
+        public void AddTodo(object sender, RoutedEventArgs eventArgs)
         {
             Todo todo = new Todo();
             todo.Text = TodoText;

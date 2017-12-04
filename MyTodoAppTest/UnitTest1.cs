@@ -18,7 +18,7 @@ namespace MyTodoAppTest
             var mwvm = new MainWindowViewModel();
             //Act
             mwvm.TodoText = V;
-            mwvm.AddTodo(null);
+            mwvm.AddTodo(this,new System.Windows.RoutedEventArgs());
             //Assert
             Assert.AreEqual(V, mwvm.Todos.First().Text);
             Assert.AreEqual(String.Empty, mwvm.TodoText);
