@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyTodo"
         xmlns:viewModels="clr-namespace:MyTodo.ViewModels"
+    xmlns:converters="clr-namespace:MyTodo.Converters"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MyTodo.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <converters:UpperCaseConverter x:Key="UpperCaseConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.DataContext>
             <viewModels:MainWindowViewModel/>
@@ -31,6 +35,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
+            <Label Height="25" Content="{Binding TodoText, Converter={StaticResource UpperCaseConverter}}" />
         </StackPanel>
         <ListView ItemsSource="{Binding Todos}" DisplayMemberPath="Text" Grid.Row="1" BorderThickness="0"/>
     </Grid>
