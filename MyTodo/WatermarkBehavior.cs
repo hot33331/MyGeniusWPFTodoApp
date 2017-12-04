@@ -15,6 +15,12 @@ namespace MyTodo
             AssociatedObject.GotFocus += AssociatedObject_GotFocus;
             AssociatedObject.LostFocus += AssociatedObject_LostFocus;
             AssociatedObject_LostFocus(this,new RoutedEventArgs());
+            
+        }
+
+        private void AssociatedObject_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
 
         private void AssociatedObject_LostFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -34,9 +40,11 @@ namespace MyTodo
             TextBox actualTextBox = AssociatedObject;
             if (actualTextBox.Text == Text)
             {
+                actualTextBox.TextChanged -= AssociatedObject_LostFocus;
                 actualTextBox.Text = string.Empty;
                 actualTextBox.Foreground=new SolidColorBrush(Colors.Black);
                 actualTextBox.FontStyle = FontStyles.Normal;
+                actualTextBox.TextChanged += AssociatedObject_LostFocus;
             }
         }
     }
