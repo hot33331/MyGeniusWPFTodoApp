@@ -2,8 +2,18 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MyTodo"
+             xmlns:converters="clr-namespace:MyTodo.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <converters:UpperCaseConverter x:Key="UpperCaseConverter"/>
+                </ResourceDictionary>
+                <ResourceDictionary Source="CiResDic.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
          
     </Application.Resources>
 </Application>

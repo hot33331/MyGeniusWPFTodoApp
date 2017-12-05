@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
-        <converters:UpperCaseConverter x:Key="UpperCaseConverter"/>
+        
         <viewModels:MainWindowViewModel x:Key="ViewModel"/>
         <DataTemplate x:Key="TodoItemDataTemplate">
             <StackPanel>
