@@ -3,7 +3,6 @@ using PropertyChanged;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace MyTodo.ViewModels
 {

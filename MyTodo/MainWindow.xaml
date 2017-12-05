@@ -12,6 +12,19 @@
     <Window.Resources>
         <converters:UpperCaseConverter x:Key="UpperCaseConverter"/>
         <viewModels:MainWindowViewModel x:Key="ViewModel"/>
+        <DataTemplate x:Key="TodoItemDataTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Text}">
+                    <Button Height="25" Width="40" Content="X">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:CallMethodAction TargetObject="{Binding Mode=OneWay, Source={StaticResource ViewModel}}" MethodName="RemoveTodo"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     <Grid DataContext="{StaticResource ViewModel}">
         
@@ -36,7 +49,7 @@
             </Button>
             <Label Height="25" Content="{Binding TodoText, Converter={StaticResource UpperCaseConverter}}" />
         </StackPanel>
-        <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0" SelectedItem="{Binding SelectedTodo}">
+        <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0" SelectedItem="{Binding SelectedTodo}" ItemTemplate="{StaticResource TodoItemDataTemplate}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Style.Triggers>
@@ -46,21 +59,7 @@
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Text}">
-                            <Button Height="25" Width="40" Content="X">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <ei:CallMethodAction TargetObject="{Binding Mode=OneWay, Source={StaticResource ViewModel}}" MethodName="RemoveTodo"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </Button>
-                        </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            
         </ListView>
     </Grid>
 </Window>
