@@ -36,12 +36,21 @@
             </Button>
             <Label Height="25" Content="{Binding TodoText, Converter={StaticResource UpperCaseConverter}}" />
         </StackPanel>
-        <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0">
+        <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0" SelectedItem="{Binding SelectedTodo}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="IsSelected" Value="True"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Text}">
-                            <Button Height="25" Width="40" Content="X" Tag="{Binding}">
+                            <Button Height="25" Width="40" Content="X">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <ei:CallMethodAction TargetObject="{Binding Mode=OneWay, Source={StaticResource ViewModel}}" MethodName="RemoveTodo"/>
