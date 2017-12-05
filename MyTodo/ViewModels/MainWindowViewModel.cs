@@ -1,13 +1,9 @@
 ﻿using MyTodo.Entities;
 using PropertyChanged;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MyTodo.ViewModels
 {
@@ -29,6 +25,12 @@ namespace MyTodo.ViewModels
             Todos.Add(todo);
 
             TodoText = String.Empty;
+        }
+
+        public void RemoveTodo(object sender, RoutedEventArgs eventArgs)
+        {
+            Todo selectedTodo = (Todo)((Button) sender).Tag;
+            Todos.Remove(selectedTodo);
         }
 
        

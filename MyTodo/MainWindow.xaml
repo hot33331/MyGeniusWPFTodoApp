@@ -11,11 +11,10 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <converters:UpperCaseConverter x:Key="UpperCaseConverter"/>
+        <viewModels:MainWindowViewModel x:Key="ViewModel"/>
     </Window.Resources>
-    <Grid>
-        <Grid.DataContext>
-            <viewModels:MainWindowViewModel/>
-        </Grid.DataContext>
+    <Grid DataContext="{StaticResource ViewModel}">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
             <RowDefinition/>
@@ -37,6 +36,22 @@
             </Button>
             <Label Height="25" Content="{Binding TodoText, Converter={StaticResource UpperCaseConverter}}" />
         </StackPanel>
-        <ListView ItemsSource="{Binding Todos}" DisplayMemberPath="Text" Grid.Row="1" BorderThickness="0"/>
+        <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Text}">
+                            <Button Height="25" Width="40" Content="X" Tag="{Binding}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <ei:CallMethodAction TargetObject="{Binding Mode=OneWay, Source={StaticResource ViewModel}}" MethodName="RemoveTodo"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
