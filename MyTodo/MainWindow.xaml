@@ -8,7 +8,7 @@
     xmlns:converters="clr-namespace:MyTodo.Converters"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MyTodo.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}">
     <Window.Resources>
         
         <viewModels:MainWindowViewModel x:Key="ViewModel"/>
@@ -26,7 +26,7 @@
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    <Grid DataContext="{StaticResource ViewModel}">
+    <Grid DataContext="{Binding Source={StaticResource ViewModel}}" d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>

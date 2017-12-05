@@ -2,6 +2,7 @@
 using PropertyChanged;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 
 namespace MyTodo.ViewModels
@@ -9,8 +10,16 @@ namespace MyTodo.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class MainWindowViewModel 
     {
-        
 
+        public MainWindowViewModel()
+        {
+            //if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            //{
+            //    Todos.Add(new Todo(){Text = "Laufen"});
+            //    Todos.Add(new Todo() { Text = "Tanzen" });
+            //    Todos.Add(new Todo() { Text = "Singen" });
+            //}
+        }
         public string TodoText { get; set; }
 
         public ObservableCollection<Todo> Todos { get; set; } = new ObservableCollection<Todo>();

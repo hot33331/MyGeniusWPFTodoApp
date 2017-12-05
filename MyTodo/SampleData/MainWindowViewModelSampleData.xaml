@@ -1,0 +1,8 @@
+﻿<ViewModels:MainWindowViewModel xmlns:ViewModels="clr-namespace:MyTodo.ViewModels" xmlns:Entities="clr-namespace:MyTodo.Entities" TodoText="Nam sed">
+	<ViewModels:MainWindowViewModel.SelectedTodo>
+		<Entities:Todo Text="Vestibulum etiam"/>
+	</ViewModels:MainWindowViewModel.SelectedTodo>
+<ViewModels:MainWindowViewModel.Todos>
+		<Entities:Todo Text="Vestibulum etiam"/>
+	</ViewModels:MainWindowViewModel.Todos>
+</ViewModels:MainWindowViewModel>
