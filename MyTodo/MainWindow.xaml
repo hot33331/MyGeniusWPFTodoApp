@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyTodo"
         xmlns:viewModels="clr-namespace:MyTodo.ViewModels"
-    xmlns:converters="clr-namespace:MyTodo.Converters"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MyTodo.MainWindow"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="MyTodo.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}">
     <Window.Resources>
@@ -33,22 +32,13 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Height="25" Content="Neue Todo:"/>
-            <TextBox Text="{Binding TodoText}" Height="25" Width="140">
-                <i:Interaction.Behaviors>
-                    <local:WatermarkBehavior Text="Todo eingeben"/>
-                </i:Interaction.Behaviors>
-            </TextBox>
-            <Button Height="25" Width="40" Content="OK" >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="AddTodo"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <Label Height="25" Content="{Binding TodoText, Converter={StaticResource UpperCaseConverter}}" />
-        </StackPanel>
+        <local:AddTodoUserControl TodoText="{Binding TodoText}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="OkClick">
+                    <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="AddTodo"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </local:AddTodoUserControl>
         <ListView ItemsSource="{Binding Todos}"  Grid.Row="1" BorderThickness="0" SelectedItem="{Binding SelectedTodo}" ItemTemplate="{StaticResource TodoItemDataTemplate}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

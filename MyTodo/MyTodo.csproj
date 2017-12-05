@@ -61,11 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddTodoUserControl.xaml.cs">
+      <DependentUpon>AddTodoUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\UpperCaseConverter.cs" />
     <Compile Include="DelegateComand.cs" />
     <Compile Include="iCommand.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="WatermarkBehavior.cs" />
+    <Page Include="AddTodoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CiResDic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -18,9 +18,9 @@ namespace MyTodo
             
         }
 
-        private void AssociatedObject_TextChanged(object sender, TextChangedEventArgs e)
+        public WatermarkBehavior()
         {
-            
+            //???
         }
 
         private void AssociatedObject_LostFocus(object sender, System.Windows.RoutedEventArgs e)
